@@ -2,20 +2,24 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
 def load_data():
-    df = pd.read_csv("data/packets.csv")
-    return df
+    return pd.read_csv("data/packets.csv")
 
 def preprocess(df):
-    # Encode categorical variables
-    le_protocol = LabelEncoder()
-    le_source = LabelEncoder()
-    le_dest = LabelEncoder()
+    df = df.copy()
 
-    df["Protocol"] = le_protocol.fit_transform(df["Protocol"].astype(str))
-    df["Source"] = le_source.fit_transform(df["Source"].astype(str))
-    df["Destination"] = le_dest.fit_transform(df["Destination"].astype(str))
+    # Encode categorical columns
+    cat_cols = ["Source", "Destination", "Protocol"]
 
-    # Target = network load
-    df["target"] = df["Length"]
+    for col in cat_cols:
+        if col in df.columns:
+            le = LabelEncoder()
+            df[col] = le.fit_transform(df[col].astype(str))
 
-    return df
+    # Remove non-numeric text columns
+    drop_cols = ["Length", "Info"]
+    drop_cols = [col for col in drop_cols if col in df.columns]
+
+    X = df.drop(columns=drop_cols)
+    y = df["Length"]
+
+    return X, y

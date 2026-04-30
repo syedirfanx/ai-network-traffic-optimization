@@ -1,23 +1,42 @@
-import pandas as pd
-import pickle
+import os
+import joblib
+
 from src.preprocess import load_data, preprocess
-from src.allocation import allocate_resources
+from src.train import train_model
+from src.evaluate import evaluate
 
-# Load data
+os.makedirs("results", exist_ok=True)
+os.makedirs("models", exist_ok=True)
+
+print("Loading dataset...")
 df = load_data()
-df = preprocess(df)
 
-# Load model
-model = pickle.load(open("models/model.pkl", "rb"))
+print("Preprocessing...")
+X, y = preprocess(df)
 
-features = ["Time", "Source", "Destination", "Protocol", "No."]
-predictions = model.predict(df[features])
+print("Training model...")
+model, X_test, y_test, preds = train_model(X, y)
 
-df["predicted_load"] = predictions
+evaluate(y_test, preds)
 
-# Apply allocation logic
-df["allocation"] = df["predicted_load"].apply(allocate_resources)
 
-print(df[["Time", "Length", "predicted_load", "allocation"]].head())
+def allocate(load):
+    if load < 100:
+        return "LOW → Normal Routing"
+    elif load < 500:
+        return "MEDIUM → Moderate Scaling"
+    else:
+        return "HIGH → Increase Bandwidth"
 
-df.to_csv("results/output.csv", index=False)
+allocations = [allocate(p) for p in preds[:20]]
+
+# Save output
+with open("results/allocation_output.txt", "w", encoding="utf-8") as f:
+    for i, val in enumerate(allocations):
+        f.write(f"Prediction {i}: {val}\n")
+
+
+print("\nOutputs generated:")
+print("- prediction_vs_actual.png")
+print("- allocation_output.txt")
+print("Model saved: models/model.pkl")
