@@ -109,6 +109,7 @@ This simulates real-world systems such as:
 
 ### Traffic Prediction
 ![alt text](image.png)
+
 The model successfully learns traffic patterns and produces predictions closely aligned with actual values.
 
 ### Resource Allocation Output
