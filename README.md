@@ -109,6 +109,7 @@ This simulates real-world systems such as:
 
 ### Traffic Prediction
 ![alt text](image.png)
+
 The model captures overall traffic trends effectively, with predictions closely following actual values under normal conditions. Some deviations are observed during high-variance spikes, which is expected in real-world network traffic scenarios.
 
 ### Quantitative Evaluation
