@@ -149,9 +149,10 @@ The variability observed in prediction errors suggests that network traffic exhi
 
 ## Key Insights
 
-- The model effectively captures fluctuations in network traffic
-- Traffic load can be predicted with reasonable accuracy
-- Simple decision rules can simulate real-world optimization strategies
+- Network traffic exhibits non-linear and bursty behavior, making accurate prediction challenging, especially during sudden spikes  
+- The model performs well under stable conditions but shows higher error during high-variance traffic periods  
+- Predicted traffic patterns can be effectively used to drive proactive resource allocation strategies  
+- Even simple rule-based allocation demonstrates how predictive models can support intelligent network control systems  
 
 
 ---
