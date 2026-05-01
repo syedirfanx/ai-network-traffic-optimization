@@ -1,4 +1,4 @@
-# AI Network Traffic Prediction and Resource Optimization
+# AI-Based Network Traffic Prediction and Resource Optimization
 
 ## Problem Statement
 
@@ -109,8 +109,23 @@ This simulates real-world systems such as:
 
 ### Traffic Prediction
 ![alt text](image.png)
-
 The model successfully learns traffic patterns and produces predictions closely aligned with actual values.
+
+### Quantitative Evaluation
+```
+| Metric | Value |
+| ------ | ----- |
+| MAE    | 85.97 |
+| RMSE   | 387.71|
+| R²     | 0.78  |
+```
+#### Interpretation:
+
+- The MAE of 85.97 indicates that, on average, the model’s predictions deviate moderately from actual traffic values.
+- The higher RMSE (387.71) suggests the presence of occasional large prediction errors, likely caused by sudden spikes in network traffic.
+- The R² score of 0.78 demonstrates that the model explains approximately 78% of the variance in network traffic, indicating strong predictive capability for a baseline model.
+
+Overall, the results confirm that the model effectively captures underlying traffic patterns, while highlighting the challenges of predicting abrupt network fluctuations.
 
 ### Resource Allocation Output
 
@@ -120,7 +135,7 @@ Prediction 1: MEDIUM → Moderate Scaling
 Prediction 2: HIGH → Increase Bandwidth
 ...
 ```
-
+This performance establishes a reliable baseline for further improvements using time-series and deep learning approaches.
 ---
 
 ## Key Insights

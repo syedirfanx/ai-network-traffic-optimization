@@ -15,7 +15,7 @@ print("Preprocessing...")
 X, y = preprocess(df)
 
 print("Training model...")
-model, X_test, y_test, preds = train_model(X, y)
+model, X_test, y_test, preds, mae, rmse, r2 = train_model(X, y)
 
 evaluate(y_test, preds)
 
@@ -40,3 +40,7 @@ print("\nOutputs generated:")
 print("- prediction_vs_actual.png")
 print("- allocation_output.txt")
 print("Model saved: models/model.pkl")
+print("\nMODEL PERFORMANCE")
+print(f"MAE  : {mae:.2f}")
+print(f"RMSE : {rmse:.2f}")
+print(f"R2   : {r2:.2f}")
