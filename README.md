@@ -109,16 +109,16 @@ This simulates real-world systems such as:
 
 ### Traffic Prediction
 ![alt text](image.png)
-The model successfully learns traffic patterns and produces predictions closely aligned with actual values.
+The model captures overall traffic trends effectively, with predictions closely following actual values under normal conditions. Some deviations are observed during high-variance spikes, which is expected in real-world network traffic scenarios.
 
 ### Quantitative Evaluation
-```
+
 | Metric | Value |
 | ------ | ----- |
 | MAE    | 85.97 |
 | RMSE   | 387.71|
 | R²     | 0.78  |
-```
+
 #### Interpretation:
 
 - The MAE of 85.97 indicates that, on average, the model’s predictions deviate moderately from actual traffic values.
@@ -126,6 +126,8 @@ The model successfully learns traffic patterns and produces predictions closely 
 - The R² score of 0.78 demonstrates that the model explains approximately 78% of the variance in network traffic, indicating strong predictive capability for a baseline model.
 
 Overall, the results confirm that the model effectively captures underlying traffic patterns, while highlighting the challenges of predicting abrupt network fluctuations.
+
+This performance establishes a reliable baseline for further improvements using time-series and deep learning approaches.
 
 ### Resource Allocation Output
 
@@ -135,7 +137,13 @@ Prediction 1: MEDIUM → Moderate Scaling
 Prediction 2: HIGH → Increase Bandwidth
 ...
 ```
-This performance establishes a reliable baseline for further improvements using time-series and deep learning approaches.
+
+---
+
+## Research Insight
+
+The variability observed in prediction errors suggests that network traffic exhibits non-stationary and bursty behavior, motivating the use of advanced time-series and deep learning models for improved performance.
+
 ---
 
 ## Key Insights
@@ -143,6 +151,7 @@ This performance establishes a reliable baseline for further improvements using 
 - The model effectively captures fluctuations in network traffic
 - Traffic load can be predicted with reasonable accuracy
 - Simple decision rules can simulate real-world optimization strategies
+
 
 ---
 
