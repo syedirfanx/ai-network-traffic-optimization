@@ -1,4 +1,4 @@
-# AI-Based Network Traffic Prediction and Resource Optimization
+# AI Network Traffic Prediction and Resource Optimization
 
 ## Problem Statement
 
